@@ -6,9 +6,9 @@ var mysql = require("mysql");
 var sequelize;
 
 
-// if (process.env.JAWSDB_URL) {
-//     sequelize = mysql.createConnection(process.env.JAWSDB_URL);
-// } else {
+if (process.env.JAWSDB_URL) {
+    sequelize = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
     const keys = require("../keys.js");
 
     sequelize = new Sequelize("sequelize_burgers", "root", keys.mysqlCred.pw, {
@@ -21,7 +21,7 @@ var sequelize;
           idle: 10000
         }
       });
-// }
+}
 
 // Exports the connection for other files to use
 module.exports = sequelize;
